@@ -48,9 +48,13 @@ contract SolnSquareVerifier is CustomERC721Token {
         uint256[2] memory input
     ) public {
         bytes32 solHash = keccak256(abi.encodePacked(input[0], input[1]));
-        require( uniqueSolution[solHash].tokenOwner == address(1),"Solution has been already added" );
+        require(
+            uniqueSolution[solHash].tokenOwner == address(0),
+            "Solution has been already added"
+        );
 
-        require(verifier.verifyTx(a, b, c, input), "Error! Solution can not be verified");
+        bool verified = verifier.verifyTx(a, b, c, input);
+        require(verified, "Solution could not be verified");
 
         uint256 index = solutions.length;
 
@@ -70,9 +74,12 @@ contract SolnSquareVerifier is CustomERC721Token {
         uint256[2] memory input
     ) public {
         bytes32 solHash = keccak256(abi.encodePacked(input[0], input[1]));
-        require(uniqueSolution[solHash].tokenOwner != address(1), "Solution does not exist yet");
+        require(
+            uniqueSolution[solHash].tokenOwner != address(0),
+            "Solution does not exist yet"
+        );
 
-        require(uniqueSolution[solHash].isUsed == false, "Solution has been used");
+        require(uniqueSolution[solHash].isUsed == false, "Solution had been used");
 
         uniqueSolution[solHash].isUsed == true;
         super.mint(toOwner, tokenId);

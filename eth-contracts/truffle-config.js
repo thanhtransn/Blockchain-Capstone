@@ -18,30 +18,19 @@
  *
  */
 
-// const HDWalletProvider = require('truffle-hdwallet-provider');
-// const infuraKey = "fj4jll3k.....";
-//
-// const fs = require('fs');
-// const mnemonic = fs.readFileSync(".secret").toString().trim();
-
-const HDWalletProvider = require('truffle-hdwallet-provider');
-
-// const fs = require('fs');
-// const infuraKey = fs.readFileSync(".rinkeby-infurakey").toString().trim();
-// const mnemonic = fs.readFileSync(".secret").toString().trim();
+const HDWalletProvider = require("truffle-hdwallet-provider");
 
 module.exports = {
-
   networks: {
     development: {
-      host: "127.0.0.1",     // Localhost (default: none)
-      port: 8545,            // Standard Ethereum port (default: none)
-      network_id: "*",       // Any network (default: none)
+      host: "127.0.0.1", // Localhost (default: none)
+      port: 8545, // Standard Ethereum port (default: none)
+      network_id: "*", // Any network (default: none)
     },
     rinkeby: {
       provider: () =>
         new HDWalletProvider(
-          `proud holiday ridge outer banner rely rural interest forum antique lion asthma`,
+          `put crunch wash scene early across angry thunder silly hat artist shadow`,
           `https://rinkeby.infura.io/v3/ac623856f9944b7aae5e0af6cdeab65e`
         ),
       network_id: 4, // Ropsten's id
@@ -53,13 +42,12 @@ module.exports = {
   },
 
   mocha: {
-    timeout: 10000000
+    timeout: 10000000,
   },
 
   compilers: {
     solc: {
       version: "^0.5.5",
-    }
-  }
-
-}
+    },
+  },
+};

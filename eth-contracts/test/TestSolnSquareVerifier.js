@@ -1,3 +1,5 @@
+
+
 var Verifier = artifacts.require('Verifier');
 var SolnSquareVerifier = artifacts.require('SolnSquareVerifier');
 
@@ -27,8 +29,8 @@ contract('TestSolnSquareVerifier', accounts => {
 
             let result = await this.contract.addSolution(Proof.proof.a, Proof.proof.b, Proof.proof.c, Proof.inputs, { from: account_one });
 
-            truffleAssert.eventEmitted(result, 'SolutionAdded', (ev) => {
-                return ev.solutionIndex == 0;
+            truffleAssert.eventEmitted(result, 'SolutionIsAdded', (ev) => {
+                return ev.index == 0;
             });
         });
 
